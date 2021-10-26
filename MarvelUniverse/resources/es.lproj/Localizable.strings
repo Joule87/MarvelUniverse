@@ -1,0 +1,24 @@
+/* 
+  Localizable.strings
+  MarvelUniverse
+
+  Created by Julio Collado on 20/10/21.
+  
+*/
+"name" = "nombre";
+"description" = "descripción";
+"comics" = "historietas";
+"series" = "series";
+"stories" = "cuentos";
+"events" = "eventos";
+"retry" = "reintentar";
+"close" = "cerrar";
+"error" = "Error";
+
+"characterList.navigationBar.title" = "Personajes Marvel";
+"characterDetails.navigationBar.title" = "Detalles del Personaje";
+
+//Network Error
+"data.error" = "Lo sentimos, hubo un problema, póngase en contacto con nuestro equipo de soporte por correo electrónico openbank-support@gmail.com.";
+"invalid.response.error" = "Lo sentimos, estamos enfrentando algunos problemas. ¿Podría intentarlo de nuevo más tarde? Si el problema persiste, háganoslo saber por correo electrónico a openbank-support@gmail.com.";
+"characters.error.empty.list" = "Lo siento, no se pudo encontrar ningún personaje, inténtalo más tarde.";
