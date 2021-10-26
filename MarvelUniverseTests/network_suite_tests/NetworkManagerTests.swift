@@ -72,8 +72,8 @@ class NetworkManagerTests: XCTestCase {
     }
     
     func test_fetchObject_Succeeded() {
-        let characterData = APICharacterData(offset: 0, limit: 20, total: 1954, count: 0, results: [])
-        guard let data = try? JSONEncoder().encode(characterData) else {
+        let apiResult = APIResult(data: APICharacterData(offset: 0, limit: 20, total: 1954, count: 0, results: [MockedMarvelObjects.character]))
+        guard let data = try? JSONEncoder().encode(apiResult) else {
             XCTAssert(false)
             return
         }
@@ -82,10 +82,10 @@ class NetworkManagerTests: XCTestCase {
         session.data = data
         session.response = urlResponse
         
-        let completion: (Result<[APICharacterData], NetworkError>) -> () = { result in
+        let completion: (Result<APIResult, NetworkError>) -> () = { result in
             switch result {
             case .success(let value):
-                XCTAssertTrue(value.count == 1)
+                XCTAssertTrue(value.data.results.count == 1)
             case .failure(_):
                 XCTAssert(false)
             }

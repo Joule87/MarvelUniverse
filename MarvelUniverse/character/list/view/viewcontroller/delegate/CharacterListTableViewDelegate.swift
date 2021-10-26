@@ -10,6 +10,8 @@ import UIKit
 class CharacterListTableViewDelegate: NSObject, CharacterListTableViewDelegateInterface {
     
     var characterList: [CharacterListViewModel] = []
+    var totalItems: Int = 0
+    
     private weak var delegate: (Selectable & Reloadable)?
     
     init(delegate: (Selectable & Reloadable)? = nil) {
@@ -30,7 +32,7 @@ class CharacterListTableViewDelegate: NSObject, CharacterListTableViewDelegateIn
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == characterList.count - 15 {
+        if characterList.count < totalItems, indexPath.row == characterList.count - 15 {
             delegate?.reload()
         }
     }
@@ -41,6 +43,9 @@ class CharacterListTableViewDelegate: NSObject, CharacterListTableViewDelegateIn
     }
     
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if characterList.count >= totalItems {
+            return
+        }
         let downloader = ImageDownloader()
         indexPaths.forEach({ item in
             let imageStringUrl = characterList[item.row].imageURL

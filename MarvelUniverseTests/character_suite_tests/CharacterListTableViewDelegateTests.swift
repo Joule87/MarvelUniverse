@@ -18,6 +18,7 @@ class CharacterListTableViewDelegateTests: XCTestCase {
     override func setUp() {
         delegate = CharacterListTableViewDelegate(delegate: self)
         delegate.characterList = MockedMarvelObjects.characterList
+        delegate.totalItems = 200
         tableView = UITableView()
     }
     

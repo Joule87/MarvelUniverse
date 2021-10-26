@@ -25,36 +25,27 @@ struct NetworkManager: NetworkManagerInterface {
             completionHandler(.failure(.invalidUrl))
             return
         }
-        
         session.dataTask(with: urlRequest) { data, response , error in
             if let unwrappedError = error {
                 logger.log(category: .repository, message: "Fetch failed with error: \(unwrappedError.localizedDescription)", access: .public, type: .debug)
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.error(errorDescription: unwrappedError.localizedDescription)))
-                }
+                completionHandler(.failure(.error(errorDescription: unwrappedError.localizedDescription)))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
                 logger.log(category: .repository, message: "\(response.debugDescription)", access: .public, type: .debug)
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.invalidResponse))
-                }
+                completionHandler(.failure(.invalidResponse))
                 return
             }
             
             guard let data = data else {
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.invalidData))
-                }
+                completionHandler(.failure(.invalidData))
                 return
             }
             
             do {
                 let jsonObject = try JSONDecoder().decode(T.self, from: data)
-                DispatchQueue.main.async {
-                    completionHandler(.success(jsonObject))
-                }
+                completionHandler(.success(jsonObject))
             } catch let decodeError {
                 if let error = decodeError as? DecodingError {
                     switch error {
@@ -70,9 +61,7 @@ struct NetworkManager: NetworkManagerInterface {
                         logger.log(category: .repository, message: "ERROR: \(error.localizedDescription)", access: .public, type: .debug)
                     }
                 }
-                DispatchQueue.main.async {
-                    completionHandler(.failure(.decodingError))
-                }
+                completionHandler(.failure(.decodingError))
             }
         }.resume()
     }
@@ -84,22 +73,17 @@ struct NetworkManager: NetworkManagerInterface {
     func fetchData(from url: URL, completion: @escaping (Result<Data, NetworkError>) -> Void) {
         let urlSessionDataTask = session.dataTask(with: url) { data, _ , error in
             if let error = error {
-                DispatchQueue.main.async {
-                    completion(.failure(.error(errorDescription: error.localizedDescription)))
-                }
+                completion(.failure(.error(errorDescription: error.localizedDescription)))
                 return
             }
             
             guard let data = data else {
-                DispatchQueue.main.async {
-                    completion(.failure(.invalidData))
-                }
+                completion(.failure(.invalidData))
                 return
             }
             
-            DispatchQueue.main.async() {
-                completion(.success(data))
-            }
+            completion(.success(data))
+            
         }
         urlSessionDataTask.priority = URLSessionTask.highPriority
         urlSessionDataTask.resume()

@@ -118,6 +118,7 @@ extension CharacterListViewController: PresenterRequestDelegate, Requestable, Ch
             return
         }
         tableViewDelegate?.characterList = presenter.characterList
+        tableViewDelegate?.totalItems = presenter.totalItems
         characterListTableView.reloadData()
     }
     

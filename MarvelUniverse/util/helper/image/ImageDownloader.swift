@@ -21,14 +21,15 @@ struct ImageDownloader: Downloadable {
             completion?(data)
             return
         }
-        
-        networkManager.fetchData(from: url) { result in
-            switch result {
-            case .success(let data):
-                imageDataCache.setObject(data as AnyObject, forKey: urlSting as AnyObject)
-                completion?(data)
-            case .failure(_):
-                completion?(nil)
+        DispatchQueue.global(qos: .userInitiated).async {
+            networkManager.fetchData(from: url) { result in
+                switch result {
+                case .success(let data):
+                    imageDataCache.setObject(data as AnyObject, forKey: urlSting as AnyObject)
+                    completion?(data)
+                case .failure(_):
+                    completion?(nil)
+                }
             }
         }
     }

@@ -9,6 +9,7 @@ import Foundation
 
 class CharacterListPresenter: CharacterListPresenterInterface {
     var characterList: [CharacterListViewModel] = []
+    var totalItems: Int = 0
     var repository: CharacterRepositoryInterface
     weak var delegate: (PresenterRequestDelegate & Requestable)?
     
@@ -25,6 +26,7 @@ class CharacterListPresenter: CharacterListPresenterInterface {
                                        events: SelectionViewModel(amount: "\($0.events.returned)/\($0.events.available)", items: $0.events.items))
             } ?? []
             characterList.append(contentsOf: newRequestedCharacterList)
+            totalItems = data?.total ?? 0
             delegate?.succeeded()
         }
     }
@@ -41,11 +43,13 @@ class CharacterListPresenter: CharacterListPresenterInterface {
         }
         repository.requestCharacters(offSet: offSet) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case .success(let value):
-                self.data = value.data
-            case .failure(let error):
-                self.delegate?.failed(errorCode: CharacterErrorRequestCode.characterList.rawValue, errorMessage: error.customDescription)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    self.data = value.data
+                case .failure(let error):
+                    self.delegate?.failed(errorCode: CharacterErrorRequestCode.characterList.rawValue, errorMessage: error.customDescription)
+                }
             }
         }
     }
@@ -54,13 +58,15 @@ class CharacterListPresenter: CharacterListPresenterInterface {
     func getCharacter(by id: Int) {
         repository.requestCharacter(by: id) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case .success(let value):
-                if let character = value.data.results.first {
-                    self.delegate?.fetched(character: character)
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
+                    if let character = value.data.results.first {
+                        self.delegate?.fetched(character: character)
+                    }
+                case .failure(let error):
+                    self.delegate?.failed(errorCode: CharacterErrorRequestCode.characterById.rawValue, errorMessage: error.customDescription)
                 }
-            case .failure(let error):
-                self.delegate?.failed(errorCode: CharacterErrorRequestCode.characterById.rawValue, errorMessage: error.customDescription)
             }
         }
     }

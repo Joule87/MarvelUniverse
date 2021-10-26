@@ -25,6 +25,7 @@ class CharacterProfileView: UIView {
     
     lazy var profileNetworkImageView: NetworkImageView = {
         let view = NetworkImageView()
+        view.backgroundColor = UIColor.common.appThemeBackground
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()

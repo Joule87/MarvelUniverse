@@ -9,4 +9,5 @@ import UIKit
 
 protocol CharacterListTableViewDelegateInterface: UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching {
     var characterList: [CharacterListViewModel] { get set }
+    var totalItems: Int { get set }
 }

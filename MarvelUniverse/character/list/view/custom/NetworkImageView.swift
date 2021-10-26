@@ -48,29 +48,38 @@ class NetworkImageView: UIView {
             return
         }
         DispatchQueue.main.async {
-            self.imageView.image = img
-            self.indicator.stop()
-            self.indicator.isHidden = true
-            self.imageView.isHidden = false
+                self.imageView.image = img
+                self.indicator.stop()
+                self.indicator.isHidden = true
+                self.imageView.isHidden = false
+            UIView.animate(withDuration: 0.08) {
+                self.imageView.alpha = 1
+            }
         }
     }
     
     private func showLoadingAnimation() {
         DispatchQueue.main.async {
-            self.imageView.image = nil
-            self.indicator.start()
-            self.indicator.isHidden = false
-            self.imageView.isHidden = true
+                self.imageView.image = nil
+                self.indicator.start()
+                self.indicator.isHidden = false
+                self.imageView.isHidden = true
+            UIView.animate(withDuration: 0.08) {
+                self.imageView.alpha = 0
+            }
         }
     }
     
     private func showPlaceholder() {
         guard let placeholderImage = UIImage(named: "placeholder_product") else { return }
         DispatchQueue.main.async {
-            self.imageView.image = placeholderImage
-            self.indicator.stop()
-            self.indicator.isHidden = true
-            self.imageView.isHidden = false
+                self.imageView.image = placeholderImage
+                self.indicator.stop()
+                self.indicator.isHidden = true
+                self.imageView.isHidden = false
+            UIView.animate(withDuration: 0.08) {
+                self.imageView.alpha = 1
+            }
         }
     }
     

@@ -3,10 +3,27 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "CharacterListTableViewDelegate.tableView(_:numberOfRowsInSection:):CharacterListTableViewDelegate.swift">
+         contextName = "CharacterListTableViewDelegate.tableView(_:willDisplay:forRowAt:):CharacterListTableViewDelegate.swift">
          <PersistentStrings>
             <PersistentString
-               value = "presenter.characterList.count">
+               value = "characterList.count">
+            </PersistentString>
+            <PersistentString
+               value = "totalItems">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CharacterListTableViewDelegate.tableView(_:prefetchRowsAt:):CharacterListTableViewDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "characterList">
+            </PersistentString>
+            <PersistentString
+               value = "characterList.count">
+            </PersistentString>
+            <PersistentString
+               value = "totalItems">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,7 +36,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "CharacterListTableViewDelegate.tableView(_:numberOfRowsInSection:):CharacterListTableViewDelegate.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "presenter.characterList.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in CharacterListViewController.viewDidLoad():CharacterListViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "MockedCharacterRepository.mockedAPIResult.getter:MockedCharacterRepository.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "mockedAmount">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
