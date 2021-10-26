@@ -18,7 +18,7 @@ public class CustomActivityIndicator: UIView {
     }
     
     @IBInspectable
-    /// sets the line width of the loading indicator
+    /// Sets the line width of the loading indicator
     public var lineWidth: CGFloat = 2.0 {
         didSet {
             indicator.lineWidth = lineWidth
@@ -71,7 +71,7 @@ public class CustomActivityIndicator: UIView {
 }
 
 extension CustomActivityIndicator {
-    /// starts the animation on the indicator
+    /// Starts the animation on the indicator
     public func start() {
         isHidden = false
         guard indicator.animationKeys() == nil else { return }

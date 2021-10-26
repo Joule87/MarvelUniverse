@@ -32,6 +32,10 @@ extension UIView {
 
 
 extension UIView {
+    /// Adds and shows an animated loading view on current view
+    /// - Parameters:
+    ///   - backColor: loading view background color
+    ///   - activityStyle: style of the activityIndicator
     func showRegularLoader(backColor: UIColor? = nil, activityStyle: UIActivityIndicatorView.Style = .large) {
         let backView = UIView()
         let backViewIdentifier = ConstantViewIdentifier.regularLoader
@@ -58,6 +62,7 @@ extension UIView {
         }
     }
     
+    /// Remove loading view if exist
     func removeRegularLoader() {
         let backViewIdentifier = ConstantViewIdentifier.regularLoader
         let loaderView = self.subviews.filter { $0.accessibilityIdentifier == backViewIdentifier || $0.restorationIdentifier == backViewIdentifier }.first

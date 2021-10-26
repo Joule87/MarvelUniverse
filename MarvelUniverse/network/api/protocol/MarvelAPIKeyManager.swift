@@ -13,10 +13,15 @@ protocol MarvelAPIKeyManager {
 }
 
 extension MarvelAPIKeyManager {
+    
+    /// MarvelAPI keys 
     var keychain: MarvelKeychain? {
         return JSONUtil.loadJson("MarvelKeychain", type: MarvelKeychain.self)
     }
     
+    /// Generates a md5 hash composed by given timestamp, private and public API keys
+    /// - Parameter timeStamp: timestamp
+    /// - Returns: md5 hash as string value
     func getMD5Hash(timeStamp: String) -> String? {
         guard let privateKey = keychain?.privateKey, let publicKey = keychain?.publicKey else {
             return nil

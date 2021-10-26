@@ -29,7 +29,7 @@ class CustomActivityIndicatorAnimator {
 }
 
 extension CustomActivityIndicatorAnimator {
-    /// rotates forever once every  4 secs
+    /// Rotates forever once every  4 secs
     private func rotationAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(key: .rotationZ)
         animation.duration = 4
@@ -40,7 +40,7 @@ extension CustomActivityIndicatorAnimator {
         return animation
     }
     
-    /// makes the spring effect completing a cycle (strech and shrink) once every 1.5 secs
+    /// Makes the spring effect completing a cycle (strech and shrink) once every 1.5 secs
     private func springAnimation() -> CAAnimationGroup {
         let animation = CAAnimationGroup()
         animation.duration = 1.5

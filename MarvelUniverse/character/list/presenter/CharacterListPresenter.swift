@@ -33,7 +33,7 @@ class CharacterListPresenter: CharacterListPresenterInterface {
         self.repository = repository
     }
     
-    ///gets character list
+    /// Gets character list
     func getCharacters() {
         let offSet = characterList.count
         if offSet != 0 && offSet == data?.total {
@@ -50,7 +50,7 @@ class CharacterListPresenter: CharacterListPresenterInterface {
         }
     }
     
-    ///gets character by id
+    /// Gets character by id
     func getCharacter(by id: Int) {
         repository.requestCharacter(by: id) { [weak self] result in
             guard let self = self else { return }

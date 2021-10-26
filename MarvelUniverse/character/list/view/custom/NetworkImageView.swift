@@ -81,7 +81,7 @@ class NetworkImageView: UIView {
         showLoadedImage(placeholderImage, for: imageURL)
     }
     
-    /// gets requested image from url and shows it. If image is not in cache it will perform a new request
+    /// Gets requested image from url and shows it. If image is not in cache it will perform a new request
     ///
     /// - Parameter imageURL: image url
     /// - Parameter downloader: image downloader
@@ -96,7 +96,7 @@ class NetworkImageView: UIView {
         }
     }
     
-    /// loads and caches images from urls, if image has been loaded before it will load the cached image instead of making new request.
+    /// Loads and caches images from urls, if image has been loaded before it will load the cached image instead of making new request.
     /// and while image loads, an activity indicator is shown.
     ///
     /// - Parameter url: url of the image

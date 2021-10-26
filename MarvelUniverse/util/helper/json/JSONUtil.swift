@@ -10,6 +10,12 @@ import Foundation
 class JSONUtil {
     private static let logger = Logger()
     
+    
+    /// Loads json file and decodes its content
+    /// - Parameters:
+    ///   - fileName: json name file
+    ///   - type: expected object type
+    /// - Returns: decoded object
     static func loadJson<T: Codable>(_ fileName: String, type: T.Type) -> T? {
         if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
@@ -24,5 +30,3 @@ class JSONUtil {
         return nil
     }
 }
-
-//TODO: - clean public and private keys before submit the code
