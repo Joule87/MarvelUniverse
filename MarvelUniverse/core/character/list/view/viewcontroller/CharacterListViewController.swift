@@ -10,14 +10,14 @@ import UIKit
 class CharacterListViewController: UIViewController {
     
     static let identifier = "CharacterListViewController"
-
+    
     @IBOutlet weak var characterListTableView: UITableView! {
         didSet {
             characterListTableView.register(UINib(nibName: CharacterTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: CharacterTableViewCell.identifier)
         }
     }
     
-    var tableViewDelegate: CharacterListTableViewDelegateInterface?
+    var tableViewDelegate: TableViewDelegateInterface?
     private var presenter: CharacterListPresenterInterface?
     private lazy var errorView: ErrorView = {
         let height = self.view.frame.width * 0.70
@@ -43,7 +43,7 @@ class CharacterListViewController: UIViewController {
         super.viewWillAppear(animated)
         presenter?.getCharacters()
     }
-
+    
     private func showLoader() {
         view.showRegularLoader(backColor: UIColor.white.withAlphaComponent(0.08))
     }
@@ -62,7 +62,10 @@ class CharacterListViewController: UIViewController {
         let repository = CharacterRepository(networkManager: NetworkManager())
         presenter = CharacterListPresenter(repository: repository)
         presenter?.delegate = self
-        tableViewDelegate = CharacterListTableViewDelegate(delegate: self)
+        
+        if let presenter = self.presenter {
+            tableViewDelegate = CharacterListTableViewDelegate(delegate: self, presenter: presenter)
+        }
     }
     
     private func showErrorView(with message: String?) {
@@ -88,6 +91,30 @@ class CharacterListViewController: UIViewController {
         characterListTableView.isHidden = false
         errorView.removeFromSuperview()
         isErrorHidden = true
+    }
+    
+    private func reloadTableView() {
+        guard let presenter = presenter else {
+            return
+        }
+        
+        if characterListTableView.visibleCells.isEmpty {
+            characterListTableView.reloadData()
+            return
+        }
+        
+        let section: Int = 0
+        let startIndex = presenter.characterList.count - presenter.amountOfLastCharactersBatch
+        let endIndex = presenter.characterList.count - 1
+        var indexPaths: [IndexPath] = []
+        for row in startIndex...endIndex {
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
+        }
+
+        characterListTableView.performBatchUpdates {
+            characterListTableView.insertRows(at: indexPaths, with: .fade)
+        }
     }
 }
 
@@ -117,9 +144,8 @@ extension CharacterListViewController: PresenterRequestDelegate, Requestable, Ch
             showErrorView(with: "characters.error.empty.list".localized)
             return
         }
-        tableViewDelegate?.characterList = presenter.characterList
-        tableViewDelegate?.totalItems = presenter.totalItems
-        characterListTableView.reloadData()
+        
+        reloadTableView()
     }
     
     func fetched(character: Character) {

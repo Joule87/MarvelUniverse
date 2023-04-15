@@ -7,9 +7,13 @@
 
 import Foundation
 
-class CharacterListPresenter: CharacterListPresenterInterface {
+final class CharacterListPresenter: CharacterListPresenterInterface {
+    
+    private var isProcessingGetCharactersRequest = false
     var characterList: [CharacterListViewModel] = []
-    var totalItems: Int = 0
+    var totalCharactersOnMarvelUniverse: Int = 0
+    var amountOfLastCharactersBatch: Int = 0
+    
     var repository: CharacterRepositoryInterface
     weak var delegate: (PresenterRequestDelegate & Requestable)?
     
@@ -25,8 +29,9 @@ class CharacterListPresenter: CharacterListPresenterInterface {
                                        stories: SelectionViewModel(amount: "\($0.stories.returned)/\($0.stories.available)", items: $0.stories.items),
                                        events: SelectionViewModel(amount: "\($0.events.returned)/\($0.events.available)", items: $0.events.items))
             } ?? []
+            amountOfLastCharactersBatch = newRequestedCharacterList.count
             characterList.append(contentsOf: newRequestedCharacterList)
-            totalItems = data?.total ?? 0
+            totalCharactersOnMarvelUniverse = data?.total ?? 0
             delegate?.succeeded()
         }
     }
@@ -37,11 +42,13 @@ class CharacterListPresenter: CharacterListPresenterInterface {
     
     /// Gets character list
     func getCharacters() {
+        let charactersAmountPerLot: Int = 50
         let offSet = characterList.count
-        if offSet != 0 && offSet == data?.total {
+        if offSet == data?.total || isProcessingGetCharactersRequest {
             return
         }
-        repository.requestCharacters(offSet: offSet) { [weak self] result in
+        isProcessingGetCharactersRequest = true
+        repository.requestCharacters(offSet: offSet, limit: charactersAmountPerLot) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
@@ -50,6 +57,7 @@ class CharacterListPresenter: CharacterListPresenterInterface {
                 case .failure(let error):
                     self.delegate?.failed(errorCode: CharacterErrorRequestCode.characterList.rawValue, errorMessage: error.customDescription)
                 }
+                self.isProcessingGetCharactersRequest = false
             }
         }
     }

@@ -7,8 +7,6 @@
 
 import UIKit
 
-let imageDataCache = NSCache<AnyObject, AnyObject>()
-
 class NetworkImageView: UIView {
     private let indicator = CustomActivityIndicator()
     private let imageView = UIImageView()
@@ -44,7 +42,7 @@ class NetworkImageView: UIView {
     }
     
     private func showLoadedImage(_ img: UIImage, for url: String) {
-        guard url == lastUrl else {
+        if url != lastUrl {
             return
         }
         DispatchQueue.main.async {

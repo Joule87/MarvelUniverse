@@ -9,7 +9,9 @@ import Foundation
 
 protocol CharacterListPresenterInterface {
     var characterList: [CharacterListViewModel] { get set }
-    var totalItems: Int { get set }
+    var totalCharactersOnMarvelUniverse: Int { get set }
+    var amountOfLastCharactersBatch: Int { get }
+    
     var delegate: (PresenterRequestDelegate & Requestable)? { get set }
     
     init(repository: CharacterRepositoryInterface)

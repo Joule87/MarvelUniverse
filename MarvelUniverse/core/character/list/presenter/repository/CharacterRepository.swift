@@ -14,10 +14,10 @@ class CharacterRepository: CharacterRepositoryInterface, MarvelAPICredential {
         self.networkManager = networkManager
     }
     
-    func requestCharacters(offSet: Int ,completion: @escaping ((Result<APIResult, NetworkError>) -> Void)) {
+    func requestCharacters(offSet: Int, limit: Int, completion: @escaping ((Result<APIResult, NetworkError>) -> Void)) {
         let charactersPath = "characters"
         var request = HTTPRequest(method: .get, path: charactersPath)
-        let queryItems = getURLQueryItems(for: offSet, limit: 50)
+        let queryItems = getURLQueryItems(for: offSet, limit: limit)
         request.queryItems = queryItems
         networkManager.fetchObject(for: request, completionHandler: completion)
     }
@@ -32,11 +32,13 @@ class CharacterRepository: CharacterRepositoryInterface, MarvelAPICredential {
     
     private func getURLQueryItems(for offSet: Int? = nil, limit: Int? = nil) -> [URLQueryItem] {
         var queryItems: [URLQueryItem] = baseQueryItems
+        let offsetKey = "offset"
+        let limitKey = "limit"
         if let offSet = offSet {
-            queryItems.append(URLQueryItem(name: "offset", value: String(offSet)))
+            queryItems.append(URLQueryItem(name: offsetKey, value: String(offSet)))
         }
         if let limit = limit {
-            queryItems.append(URLQueryItem(name: "limit", value: String(limit)))
+            queryItems.append(URLQueryItem(name: limitKey, value: String(limit)))
         }
         return queryItems
     }

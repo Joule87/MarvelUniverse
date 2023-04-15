@@ -24,7 +24,6 @@
 		865241242726D7DF00F7142B /* CharacterPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865241232726D7DF00F7142B /* CharacterPresenterTests.swift */; };
 		8652412D2726D93300F7142B /* MockedCharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8652412C2726D93300F7142B /* MockedCharacterRepository.swift */; };
 		8664919A2724A5F8008AC636 /* CharacterDetailsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866491992724A5F8008AC636 /* CharacterDetailsTableViewDelegate.swift */; };
-		866491A02724A863008AC636 /* CharacterListTableViewDelegateInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8664919F2724A863008AC636 /* CharacterListTableViewDelegateInterface.swift */; };
 		866491A62724A90A008AC636 /* CharacterDetailsTableViewDelegateInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866491A52724A90A008AC636 /* CharacterDetailsTableViewDelegateInterface.swift */; };
 		866491AE2724B1D9008AC636 /* DetailSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866491AD2724B1D9008AC636 /* DetailSection.swift */; };
 		866814432725849500D0D729 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866814422725849500D0D729 /* ErrorView.swift */; };
@@ -129,7 +128,6 @@
 		865241232726D7DF00F7142B /* CharacterPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPresenterTests.swift; sourceTree = "<group>"; };
 		8652412C2726D93300F7142B /* MockedCharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedCharacterRepository.swift; sourceTree = "<group>"; };
 		866491992724A5F8008AC636 /* CharacterDetailsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsTableViewDelegate.swift; sourceTree = "<group>"; };
-		8664919F2724A863008AC636 /* CharacterListTableViewDelegateInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListTableViewDelegateInterface.swift; sourceTree = "<group>"; };
 		866491A52724A90A008AC636 /* CharacterDetailsTableViewDelegateInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsTableViewDelegateInterface.swift; sourceTree = "<group>"; };
 		866491AD2724B1D9008AC636 /* DetailSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSection.swift; sourceTree = "<group>"; };
 		866814422725849500D0D729 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -219,6 +217,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1969E86529EADB4B002D2AA1 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				86C191FC2720526B00082752 /* character */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		862289002724D14400A6D0C7 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,9 +257,9 @@
 		862FF4F227204A6C00032F20 /* MarvelUniverse */ = {
 			isa = PBXGroup;
 			children = (
+				1969E86529EADB4B002D2AA1 /* core */,
 				86C192492720931900082752 /* network */,
 				86C1920C2720842C00082752 /* util */,
-				86C191FC2720526B00082752 /* character */,
 				86BDD2F527204BBB0007031A /* launch */,
 				86BDD2F427204B940007031A /* resources */,
 			);
@@ -369,7 +375,6 @@
 			children = (
 				8690E9C427224BB2008330DE /* Selectable.swift */,
 				8690E9CC27224BC9008330DE /* Reloadable.swift */,
-				8664919F2724A863008AC636 /* CharacterListTableViewDelegateInterface.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -877,7 +882,6 @@
 				866491A62724A90A008AC636 /* CharacterDetailsTableViewDelegateInterface.swift in Sources */,
 				86D3BAFC2724354F0093E2F7 /* Downloadable.swift in Sources */,
 				86A9B8572721AE5100520B29 /* UIColor+Extension.swift in Sources */,
-				866491A02724A863008AC636 /* CharacterListTableViewDelegateInterface.swift in Sources */,
 				86C192612720938D00082752 /* NetworkConfiguration.swift in Sources */,
 				866814432725849500D0D729 /* ErrorView.swift in Sources */,
 				862288F72724C8E700A6D0C7 /* HeaderFooterView.swift in Sources */,
