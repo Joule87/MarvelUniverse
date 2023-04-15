@@ -38,7 +38,7 @@ class NetworkImageView: UIView {
     private func setupImageView() {
         addSubview(imageView)
         imageView.pinEdges(to: self)
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleToFill
     }
     
     private func showLoadedImage(_ img: UIImage, for url: String) {

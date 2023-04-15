@@ -10,15 +10,18 @@ import XCTest
 
 class CharacterListTableViewDelegateTests: XCTestCase {
 
-    var delegate: CharacterListTableViewDelegateInterface!
+    var delegate: TableViewDelegateInterface!
     var didReload = false
     var didSelectItemId: Int?
     var tableView: UITableView!
     
     override func setUp() {
-        delegate = CharacterListTableViewDelegate(delegate: self)
-        delegate.characterList = MockedMarvelObjects.characterList
-        delegate.totalItems = 200
+        let repository = CharacterRepository(networkManager: NetworkManager())
+        let presenter = CharacterListPresenter(repository: repository)
+        
+        presenter.characterList = MockedMarvelObjects.characterList
+        presenter.totalCharactersOnMarvelUniverse = 200
+        delegate = CharacterListTableViewDelegate(delegate: self, presenter: presenter)
         tableView = UITableView()
     }
     
@@ -48,7 +51,7 @@ class CharacterListTableViewDelegateTests: XCTestCase {
         XCTAssertTrue(didReload)
         didReload = false
         
-        indexPath.item = 19
+        indexPath.item = 2
         delegate.tableView?(tableView, willDisplay: cell, forRowAt: indexPath)
         XCTAssertFalse(didReload)
     }

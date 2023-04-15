@@ -22,7 +22,7 @@ class MockedCharacterRepository: CharacterRepositoryInterface {
         self.mockedAmount = mockedAmount
     }
     
-    func requestCharacters(offSet: Int, completion: @escaping ((Result<APIResult, NetworkError>) -> Void)) {
+    func requestCharacters(offSet: Int, limit: Int, completion: @escaping ((Result<APIResult, NetworkError>) -> Void)) {
         switch expectedResult {
         case .succeeded:
             handleSucceededCharacters(completion: completion)
