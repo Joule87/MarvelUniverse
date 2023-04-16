@@ -11,7 +11,7 @@ import UIKit
 public class CustomActivityIndicator: UIView {
     @IBInspectable
     /// Sets the color of the loading indicator
-    public var color: UIColor = UIColor.common.accentColor0 {
+    public var color: UIColor = UIColor.common.yellowColorN0 {
         didSet {
             indicator.strokeColor = color.cgColor
         }

@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="47c-fs-WLC"/>
                     <connections>
                         <outlet property="characterListTableView" destination="Xee-zV-Reh" id="Pi0-Fr-TwO"/>
-                        <segue destination="kAt-wF-ai4" kind="show" id="6Ya-4H-5fp"/>
+                        <segue destination="kAt-wF-ai4" kind="show" identifier="CharacterDetailVCSegue" id="6Ya-4H-5fp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -67,8 +67,8 @@ class CharacterDetailsTableViewDelegate: NSObject, CharacterDetailsTableViewDele
             return nil
         }
         let detail = details[section]
-        header.setTitle(text: detail.name, color: UIColor.common.accentColor1)
-        header.setAccessory(text: detail.items, color: UIColor.common.accentColor1)
+        header.setTitle(text: detail.name, color: UIColor.common.yellowColorN2)
+        header.setAccessory(text: detail.items, color: UIColor.common.yellowColorN2)
         header.isSeparatorViewHidden(false)
         header.contentView.backgroundColor = UIColor.common.appThemeBackground
         return header
