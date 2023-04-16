@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharacterDetailPresenter: CharacterDetailPresenterInterface {
+final class CharacterDetailPresenter: CharacterDetailPresenterInterface {
     var character: Character
     var details: [DetailSection]
     

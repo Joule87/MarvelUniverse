@@ -1,5 +1,5 @@
 //
-//  MarvelAPICredential.swift
+//  MarvelAPIURLQueryItemInterface.swift
 //  MarvelUniverse
 //
 //  Created by Julio Collado on 23/10/21.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol MarvelAPICredential: MarvelAPIKeyManager {
+protocol MarvelAPIURLQueryItemInterface: MarvelAPIKeyInterface {
     var baseQueryItems: [URLQueryItem] { get }
 }
 
-extension MarvelAPICredential  {
+extension MarvelAPIURLQueryItemInterface  {
     var baseQueryItems: [URLQueryItem] {
         let timeStampName = "ts"
         let timeStampValue = String(Date().timeIntervalSince1970)

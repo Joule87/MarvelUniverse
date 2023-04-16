@@ -14,10 +14,10 @@ final class CharacterListPresenter: CharacterListPresenterInterface {
     var totalCharactersOnMarvelUniverse: Int = 0
     var amountOfLastCharactersBatch: Int = 0
     
-    var repository: CharacterRepositoryInterface
+    private var repository: CharacterRepositoryInterface
     weak var delegate: (PresenterRequestDelegate & Requestable)?
     
-    var data: APICharacterData? {
+    private var data: APICharacterData? {
         didSet {
             let newRequestedCharacterList = data?.results.map {
                 CharacterListViewModel(id: $0.id,

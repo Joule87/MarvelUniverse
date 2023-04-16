@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19BA017129EC6FE4001184DC /* URLQueryItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA017029EC6FE4001184DC /* URLQueryItemBuilder.swift */; };
+		19BA017329EC6FF7001184DC /* URLQueryItemBuilderInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BA017229EC6FF7001184DC /* URLQueryItemBuilderInterface.swift */; };
 		862288F72724C8E700A6D0C7 /* HeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862288F62724C8E700A6D0C7 /* HeaderFooterView.swift */; };
 		862288FC2724C91100A6D0C7 /* HeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 862288FB2724C91100A6D0C7 /* HeaderFooterView.xib */; };
 		862289032724D16F00A6D0C7 /* DetailUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862289012724D16F00A6D0C7 /* DetailUITableViewCell.swift */; };
@@ -39,8 +41,8 @@
 		86A9B84D2721AD5D00520B29 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A9B84C2721AD5D00520B29 /* UIView+Extension.swift */; };
 		86A9B8522721ADEC00520B29 /* UIBezierPath+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A9B8512721ADEC00520B29 /* UIBezierPath+Extension.swift */; };
 		86A9B8572721AE5100520B29 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A9B8562721AE5100520B29 /* UIColor+Extension.swift */; };
-		86B2849327249BA7000980CC /* MarvelAPIKeyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2849227249BA7000980CC /* MarvelAPIKeyManager.swift */; };
-		86B2849B27249BBF000980CC /* MarvelAPICredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2849A27249BBF000980CC /* MarvelAPICredential.swift */; };
+		86B2849327249BA7000980CC /* MarvelAPIKeyInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2849227249BA7000980CC /* MarvelAPIKeyInterface.swift */; };
+		86B2849B27249BBF000980CC /* MarvelAPIURLQueryItemInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B2849A27249BBF000980CC /* MarvelAPIURLQueryItemInterface.swift */; };
 		86B284A527249DFE000980CC /* CharacterDetailPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B284A427249DFE000980CC /* CharacterDetailPresenterInterface.swift */; };
 		86B284AA27249E1B000980CC /* CharacterDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B284A927249E1B000980CC /* CharacterDetailPresenter.swift */; };
 		86B3D717272466AB0086628D /* JSONUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B3D716272466AB0086628D /* JSONUtil.swift */; };
@@ -105,6 +107,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19BA017029EC6FE4001184DC /* URLQueryItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryItemBuilder.swift; sourceTree = "<group>"; };
+		19BA017229EC6FF7001184DC /* URLQueryItemBuilderInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLQueryItemBuilderInterface.swift; sourceTree = "<group>"; };
 		862288F62724C8E700A6D0C7 /* HeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderFooterView.swift; sourceTree = "<group>"; };
 		862288FB2724C91100A6D0C7 /* HeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderFooterView.xib; sourceTree = "<group>"; };
 		862289012724D16F00A6D0C7 /* DetailUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailUITableViewCell.swift; sourceTree = "<group>"; };
@@ -143,8 +147,8 @@
 		86A9B84C2721AD5D00520B29 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		86A9B8512721ADEC00520B29 /* UIBezierPath+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Extension.swift"; sourceTree = "<group>"; };
 		86A9B8562721AE5100520B29 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		86B2849227249BA7000980CC /* MarvelAPIKeyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIKeyManager.swift; sourceTree = "<group>"; };
-		86B2849A27249BBF000980CC /* MarvelAPICredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPICredential.swift; sourceTree = "<group>"; };
+		86B2849227249BA7000980CC /* MarvelAPIKeyInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIKeyInterface.swift; sourceTree = "<group>"; };
+		86B2849A27249BBF000980CC /* MarvelAPIURLQueryItemInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelAPIURLQueryItemInterface.swift; sourceTree = "<group>"; };
 		86B284A427249DFE000980CC /* CharacterDetailPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenterInterface.swift; sourceTree = "<group>"; };
 		86B284A927249E1B000980CC /* CharacterDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailPresenter.swift; sourceTree = "<group>"; };
 		86B3D716272466AB0086628D /* JSONUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONUtil.swift; sourceTree = "<group>"; };
@@ -390,8 +394,8 @@
 		86B2849F27249BD1000980CC /* protocol */ = {
 			isa = PBXGroup;
 			children = (
-				86B2849227249BA7000980CC /* MarvelAPIKeyManager.swift */,
-				86B2849A27249BBF000980CC /* MarvelAPICredential.swift */,
+				86B2849227249BA7000980CC /* MarvelAPIKeyInterface.swift */,
+				86B2849A27249BBF000980CC /* MarvelAPIURLQueryItemInterface.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -617,6 +621,7 @@
 				86C192952720974900082752 /* NetworkManager.swift */,
 				86C192602720938D00082752 /* NetworkConfiguration.swift */,
 				86C19281272094BE00082752 /* NetworkError.swift */,
+				19BA017029EC6FE4001184DC /* URLQueryItemBuilder.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -646,6 +651,7 @@
 			isa = PBXGroup;
 			children = (
 				86C192A42720986100082752 /* NetworkManagerInterface.swift */,
+				19BA017229EC6FF7001184DC /* URLQueryItemBuilderInterface.swift */,
 			);
 			path = protocol;
 			sourceTree = "<group>";
@@ -843,12 +849,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86B2849B27249BBF000980CC /* MarvelAPICredential.swift in Sources */,
+				86B2849B27249BBF000980CC /* MarvelAPIURLQueryItemInterface.swift in Sources */,
 				86C1922A27208B7800082752 /* CharacterListPresenter.swift in Sources */,
 				8668144B2725A92E00D0D729 /* AlertHelper.swift in Sources */,
 				86A9B8522721ADEC00520B29 /* UIBezierPath+Extension.swift in Sources */,
 				8690E9AF27222B43008330DE /* Item.swift in Sources */,
 				86C1920F2720844A00082752 /* String+Extension.swift in Sources */,
+				19BA017329EC6FF7001184DC /* URLQueryItemBuilderInterface.swift in Sources */,
 				86C192592720936600082752 /* HTTPMethod.swift in Sources */,
 				86C1926F272093D200082752 /* ConstantFileType.swift in Sources */,
 				866D9B6F2723799800A99392 /* CharacterProfileView.swift in Sources */,
@@ -866,6 +873,7 @@
 				862FF4F827204A6C00032F20 /* CharacterListViewController.swift in Sources */,
 				86CF8CDD27219ED300184AB0 /* CustomActivityIndicatorAnimator.swift in Sources */,
 				86B284AA27249E1B000980CC /* CharacterDetailPresenter.swift in Sources */,
+				19BA017129EC6FE4001184DC /* URLQueryItemBuilder.swift in Sources */,
 				86C192B227209AFF00082752 /* Character.swift in Sources */,
 				86C192C42720AB8800082752 /* CharacterListPresenterInterface.swift in Sources */,
 				86B3D717272466AB0086628D /* JSONUtil.swift in Sources */,
@@ -892,7 +900,7 @@
 				8690E9AA27222B31008330DE /* Selection.swift in Sources */,
 				86B3D72727246AFD0086628D /* MarvelKeychain.swift in Sources */,
 				86D3BAF4272423010093E2F7 /* ConstantViewIdentifier.swift in Sources */,
-				86B2849327249BA7000980CC /* MarvelAPIKeyManager.swift in Sources */,
+				86B2849327249BA7000980CC /* MarvelAPIKeyInterface.swift in Sources */,
 				86C1924C2720933600082752 /* HTTPRequest.swift in Sources */,
 				862289032724D16F00A6D0C7 /* DetailUITableViewCell.swift in Sources */,
 				86B3D71D272466EE0086628D /* Logger.swift in Sources */,
