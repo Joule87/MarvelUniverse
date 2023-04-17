@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkManager: NetworkManagerInterface {
+class NetworkManager: NetworkManagerInterface {
     
     private var session: URLSession
     private let logger = Logger()
@@ -25,15 +25,16 @@ struct NetworkManager: NetworkManagerInterface {
             completionHandler(.failure(.invalidUrl))
             return
         }
-        session.dataTask(with: urlRequest) { data, response , error in
+        session.dataTask(with: urlRequest) { [weak self] data, response , error in
+            guard let self = self else { return }
             if let unwrappedError = error {
-                logger.log(category: .repository, message: "Fetch failed with error: \(unwrappedError.localizedDescription)", access: .public, type: .debug)
+                self.logger.log(category: .repository, message: "Fetch failed with error: \(unwrappedError.localizedDescription)", access: .public, type: .debug)
                 completionHandler(.failure(.error(errorDescription: unwrappedError.localizedDescription)))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200  else {
-                logger.log(category: .repository, message: "\(response.debugDescription)", access: .public, type: .debug)
+                self.logger.log(category: .repository, message: "\(response.debugDescription)", access: .public, type: .debug)
                 completionHandler(.failure(.invalidResponse))
                 return
             }
@@ -50,15 +51,15 @@ struct NetworkManager: NetworkManagerInterface {
                 if let error = decodeError as? DecodingError {
                     switch error {
                     case .typeMismatch(let key, let value):
-                        logger.log(category: .repository, message: "Mismatch Error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
+                        self.logger.log(category: .repository, message: "Mismatch Error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
                     case .valueNotFound(let key, let value):
-                        logger.log(category: .repository, message: "Value not Error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
+                        self.logger.log(category: .repository, message: "Value not Error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
                     case .keyNotFound(let key, let value):
-                        logger.log(category: .repository, message: "Key not found error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
+                        self.logger.log(category: .repository, message: "Key not found error: \(key), value: \(value), Description: \(error.localizedDescription)", access: .public, type: .debug)
                     case .dataCorrupted(let key):
-                        logger.log(category: .repository, message: "Data Corrupted error: \(key), Description: \(error.localizedDescription)", access: .public, type: .debug)
+                        self.logger.log(category: .repository, message: "Data Corrupted error: \(key), Description: \(error.localizedDescription)", access: .public, type: .debug)
                     default:
-                        logger.log(category: .repository, message: "ERROR: \(error.localizedDescription)", access: .public, type: .debug)
+                        self.logger.log(category: .repository, message: "ERROR: \(error.localizedDescription)", access: .public, type: .debug)
                     }
                 }
                 completionHandler(.failure(.decodingError))
